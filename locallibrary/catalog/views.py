@@ -58,3 +58,16 @@ class BookListView(generic.ListView):
     
 class BookDetailView(generic.DetailView):
     model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 10
+    context_object_name = 'author_list'
+    template_name = 'authors/author_list.html'
+
+    def get_queryset(self):
+        return Author.objects.all()
+    
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
