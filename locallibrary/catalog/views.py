@@ -7,6 +7,9 @@ from django.views import generic
 # Create your views here.
 def index(request):
     """View function for home page of site"""
+    num_visits = request.session.get('num_visits',0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
 
     #Generate counts of some of the main objects
     num_books = Book.objects.all().count()
@@ -31,7 +34,8 @@ def index(request):
         'num_authors': num_authors,
         'num_genres': num_genres,
         'num_books_containing_word': num_books_containing_word,
-        'contains_word': contains_word
+        'contains_word': contains_word,
+        'num_visits': num_visits
     }
 
     #Render the HTML template index.html with the data in the context variable

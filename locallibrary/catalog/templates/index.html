@@ -22,4 +22,7 @@
     {% if contains_word != '' %}
     <p>Number of books containing the word "<strong>{{contains_word}}</strong>": {{num_books_containing_word}}</p>
     {% endif %}
+    <p>
+        You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+    </p>
 {% endblock %}
